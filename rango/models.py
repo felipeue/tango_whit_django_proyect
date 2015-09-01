@@ -27,7 +27,7 @@ class Page(models.Model):
         return self.title
 
 
-class UserProfile(models.Model):
+class UserProfile(models.Model): #User Model, the other data by default django model USER
     user = models.OneToOneField(User)
     website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)

@@ -1,5 +1,6 @@
 from django import forms
-from rango.models import Page, Category
+from django.contrib.auth.models import User
+from rango.models import Page, Category, UserProfile
 
 
 class CategoryForm(forms.ModelForm):
@@ -24,7 +25,7 @@ class PageForm(forms.ModelForm):
         model = Page
         exclude = ('category',)
 
-    def clean(self):
+    def clean(self):     # Simple validator
         cleaned_data = self.cleaned_data
         url = cleaned_data.get('url')
         if url and not url.startswith('http://'):
@@ -32,3 +33,22 @@ class PageForm(forms.ModelForm):
             cleaned_data['url'] = url
 
         return cleaned_data
+
+
+class UserForm(forms.ModelForm):  # data for user
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password')
+
+
+class UserProfileForm(forms.ModelForm):  # data for extra information of user
+    class Meta:
+        model = UserProfile
+        fields = ('website', 'picture')
+
+
+
+
+
