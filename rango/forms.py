@@ -10,7 +10,6 @@ class CategoryForm(forms.ModelForm):
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     class Meta:
-
         model = Category
         fields = ('name',)
 
@@ -21,11 +20,10 @@ class PageForm(forms.ModelForm):
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
     class Meta:
-
         model = Page
         exclude = ('category',)
 
-    def clean(self):     # Simple validator
+    def clean(self):  # Simple validator
         cleaned_data = self.cleaned_data
         url = cleaned_data.get('url')
         if url and not url.startswith('http://'):

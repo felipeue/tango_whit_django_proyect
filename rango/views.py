@@ -15,12 +15,14 @@ def index(request):
     list['pages'] = page_list
     return render(request, 'index.html', list)
 
+
 # simple template html
 
 
 def about(request):
     context_dict = {'text': "Testing my first template"}
     return render(request, 'about.html', context_dict)
+
 
 # multiple bdd query
 
@@ -40,6 +42,7 @@ def category(request, category_name_slug):
 
     return render(request, 'category.html', context_dict)
 
+
 # simple create to bdd
 
 
@@ -56,15 +59,15 @@ def add_category(request):
 
     return render(request, 'add_category.html', {'form': form})
 
+
 # Form to bdd whit data
 
 
 def add_page(request, category_name_slug):
-
     try:
         cat = Category.objects.get(slug=category_name_slug)
     except Category.DoesNotExist:
-                cat = None
+        cat = None
 
     if request.method == 'POST':
         form = PageForm(request.POST)
@@ -81,11 +84,12 @@ def add_page(request, category_name_slug):
     else:
         form = PageForm()
 
-    context_dict = {'form':form, 'category': cat}
-
+    context_dict = {'form': form, 'category': cat}
     return render(request, 'add_page.html', context_dict)
 
+
 def register(request):
+
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
@@ -94,11 +98,10 @@ def register(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-            profile = profile_form.save()
+            profile = profile_form.save(commit=False)
             profile.user = user
             if 'picture' in request.FILES:
                 profile.picture = request.FILES['picture']
-
             profile.save()
             registered = True
         else:
@@ -106,4 +109,6 @@ def register(request):
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
-    return render(request, 'register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+    return render(request,
+                  'register.html',
+                  {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
