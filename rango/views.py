@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from rango.models import Category, Page, UserProfile
 from rango.forms import CategoryForm, PageForm, UserProfileForm, UserForm
-# from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 # request BDD simple
 
@@ -61,8 +63,6 @@ def add_category(request):
 
 
 # Form to bdd whit data
-
-
 def add_page(request, category_name_slug):
     try:
         cat = Category.objects.get(slug=category_name_slug)
@@ -112,3 +112,34 @@ def register(request):
     return render(request,
                   'register.html',
                   {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+
+
+def user_login(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password= password)
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('/rango/')
+            else:
+                return HttpResponse("You account is disabled")
+        else:
+            print "invalid login details: {0}, {1}".format(username,password)
+            return HttpResponse('Invalid login details')
+    else:
+        return render(request, 'login.html', {})
+
+@login_required
+def required(request):
+    return HttpResponse('you can see this text')
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/rango/')
+
+
+
