@@ -47,7 +47,7 @@ def category(request, category_name_slug):
 
 # simple create to bdd
 
-
+@login_required
 def add_category(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)
@@ -63,6 +63,7 @@ def add_category(request):
 
 
 # Form to bdd whit data
+@login_required
 def add_page(request, category_name_slug):
     try:
         cat = Category.objects.get(slug=category_name_slug)
@@ -89,7 +90,6 @@ def add_page(request, category_name_slug):
 
 
 def register(request):
-
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
@@ -127,7 +127,7 @@ def user_login(request):
             else:
                 return HttpResponse("You account is disabled")
         else:
-            print "invalid login details: {0}, {1}".format(username,password)
+            print "invalid login details: {0}, {1}".format(username, password)
             return HttpResponse('Invalid login details')
     else:
         return render(request, 'login.html', {})
