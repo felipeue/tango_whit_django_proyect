@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    'easy_maps'
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -103,3 +105,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = '/rango/login/'
+
+EASY_MAPS_CENTER = (-41.3, 32)
+
+EASY_MAPS_GEOCODE = 'example.custom_geocode'
