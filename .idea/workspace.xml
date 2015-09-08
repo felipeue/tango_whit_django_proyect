@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27649c66-e3bc-4253-9360-32eb87cb6aa0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tango_whit_django_proyect/settings.py" afterPath="$PROJECT_DIR$/tango_whit_django_proyect/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tango_whit_django_proyect.iws" />
@@ -607,7 +605,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441725198167</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="basehtml">
+      <created>1441745496743</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1441745496743</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -632,7 +636,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2657512" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -677,7 +681,8 @@
     <MESSAGE value="Login finish" />
     <MESSAGE value="Login view update" />
     <MESSAGE value="Prueba los cabros" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prueba los cabros" />
+    <MESSAGE value="basehtml" />
+    <option name="LAST_COMMIT_MESSAGE" value="basehtml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
